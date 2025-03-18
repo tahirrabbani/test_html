@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stock Price Analysis Project</title>
+  <style>
+    /* Reset and basic styling */
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+    }
+    /* Header styling */
+    header {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+    /* Layout container: sidebar (left) and content (right) */
+    .container {
+      display: flex;
+      height: calc(100% - 50px); /* Adjusting for header height */
+    }
+    /* Sidebar styling (now on left) */
+    .sidebar {
+      width: 200px;
+      background: #f0f0f0;
+      padding: 10px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      margin-bottom: 10px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 8px;
+      text-decoration: none;
+      color: #333;
+      border-radius: 4px;
+    }
+    .sidebar a.active {
+      background: #007BFF;
+      color: #fff;
+    }
+    /* Content area styling */
+    .content {
+      flex: 1;
+      overflow: hidden;
+    }
+    .content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header remains visible on all pages -->
+  <header>Stock Price Analysis Project</header>
+  <div class="container">
+    <!-- Left-side: sidebar listing all stock pages -->
+    <nav class="sidebar">
+      <ul id="pageList">
+        <!-- Update these links based on your actual html_pages filenames -->
+        <li><a href="#" data-url="html_pages/stock1.html">Stock 1</a></li>
+        <li><a href="#" data-url="html_pages/stock2.html">Stock 2</a></li>
+        <li><a href="#" data-url="html_pages/stock3.html">Stock 3</a></li>
+        <!-- Add more list items as needed -->
+      </ul>
+    </nav>
+    <!-- Right-side: main content area where the subpage will be loaded -->
+    <div class="content">
+      <iframe id="contentFrame" src=""></iframe>
+    </div>
+  </div>
+  <script>
+    // Get all sidebar links and the iframe element
+    const links = document.querySelectorAll('.sidebar a');
+    const iframe = document.getElementById('contentFrame');
+
+    // Function to set active link and load the corresponding page
+    function setActive(link) {
+      links.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      iframe.src = link.getAttribute('data-url');
+    }
+
+    // Add click event listeners to each sidebar link
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();  // Prevent default link behavior
+        setActive(this);
+      });
+    });
+
+    // Optionally, load the first page by default
+    if (links.length > 0) {
+      setActive(links[0]);
+    }
+  </script>
+</body>
+</html>
