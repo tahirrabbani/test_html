@@ -1,26 +1,24 @@
-# test_html
-Basic testing
+# Viztronics Chargepoint Copilot (Demo)
 
-## Point Cloud Viewer
+This repository contains a small demo web application showing reporting dashboards and a rule-based operations copilot for an EV charging network. The backend is FastAPI with SQLite and a deterministic seeding script. The frontend uses React, Vite and Tailwind.
 
-`point_cloud_viewer.py` generates an interactive 3D scatter plot of a point cloud using Plotly.
-The viewer supports rotation, zooming, rectangle and lasso selection and lets you choose
-between several color palettes.
+## Running
 
-### Usage
-
-```bash
-python point_cloud_viewer.py
+```
+npm start
 ```
 
-Options include the number of points, groups and the palette:
+The start script will build the React client, install Python requirements, seed the SQLite database and launch the API on port 8000. Open the resulting URL to explore.
 
-```bash
-python point_cloud_viewer.py -n 2000 -g 4 -p viridis -d select -o viewer.html
+To reset and reseed the demo data at any time run:
+
 ```
-You can skip automatically opening the file with `--no-open`.
-The script writes an HTML file. Install the required dependencies with:
+python -m server.seed --reset
+```
 
-```bash
-pip install -r requirements.txt
+## Tests
+
+```
+pip install -r server/requirements.txt
+pytest server/tests -q
 ```
