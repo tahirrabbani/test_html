@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+faker
+pandas
+python-dateutil
+pytest
+requests
+python-multipart
