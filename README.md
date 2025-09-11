@@ -6,10 +6,21 @@ This repository contains a small demo web application showing reporting dashboar
 
 ```
 npm start
-```
-npm start
+
+
 ```
 
+The start script builds the React client, installs Python requirements, seeds the SQLite database and launches the API on `$PORT` (default `8000`). Open the resulting URL to explore.
+
+To reset and reseed the demo data at any time run:
+
+```
+python -m server.seed --reset
+```
+
+## Tests
+
+=======
 The start script will build the React client, install Python requirements, seed the SQLite database and launch the API on port 8000. Open the resulting URL to explore.
 
 The start script will build the React client, install Python requirements, seed the SQLite database and launch the API on port 8000. Open the resulting URL to explore.
